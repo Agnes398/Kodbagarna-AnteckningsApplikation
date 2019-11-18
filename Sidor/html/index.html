@@ -13,11 +13,29 @@
 <body>
     <div class="container-fluid">
         <header class="col-sm-12">
-             <h1>Välkomen till KodBagarnas Pub</h1>
+            <h1>Välkomen till KodBagarnas Pub</h1>
         </header>
-        <div class="content col-sm-10 col-sm-push-1">
-         <p>Var snäll och skriv in dina uppgifter i formuläret nedan. Ta av er pjucken för fan!!!</p>
-     </div>
-     </div>
+        
+        <div class="content">
+            <div class="col-sm-10 col-sm-push-1">
+                <p>Här kan du skriva text och anteckningar och vi sparar dem åt dig. 
+                    Skriv in en rubrik först och avsluta med att trycka på 'Send' in så sparas ditt text dokument. 
+                    Fyll i här nedan. 
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="usr">Title:</label>
+                <input type="text" class="form-control" id="usr">
+            </div>
+            <div class="form-group">
+                <label for="comment">Demo:</label>
+                <textarea class="form-control" rows="10" id="comment"></textarea>
+            </div>
+            <button type="button" class="btn btn-success">Send</button>
+            <button type="button" class="btn btn-info">Show all</button>
+        </div>
+        
+    </div>
 </body>
 </html>
