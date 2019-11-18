@@ -1,4 +1,7 @@
 .jumbotron.text-center{
     background-image: url("https://mapr.com/blog/sample-code-best-practices-and-technical-resources-now-available-developer-central/assets/devcentralimage.jpg");
-    background-color: lightgray;
+}
+
+.jumbotron.text-center h1{
+    color: whitesmoke;
 }
