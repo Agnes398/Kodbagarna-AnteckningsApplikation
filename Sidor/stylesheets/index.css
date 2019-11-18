@@ -3,3 +3,8 @@ header{
     background-color: aquamarine;
     padding: 35px;
 }
+.content{
+    background-color: gainsboro;
+    padding: 15px;
+    margin: 10px;
+}
