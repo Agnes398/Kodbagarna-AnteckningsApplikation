@@ -9,6 +9,6 @@ app.get(__dirname + '/html/AboutUs.html', function(req, res){
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
 
-var server = app.listen(1337, function(){
+var server = app.listen(process.env.PORT(), function(){
     console.log('Server is online on port ' + server.address().port);
 })
