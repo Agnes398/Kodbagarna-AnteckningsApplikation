@@ -32,12 +32,12 @@
         </p>
 
         <label for="usr"><b>Title:</b></label>
-        <input type="text" class="form-control" id="usr">
+        <input action = "/process" type="text" class="form-control" id="usr" name="title" method = "POST">
 
         <label for="comment"><b>Demo:</b></label>
-        <textarea class="form-control" rows="10" id="comment"></textarea>
+        <textarea class="form-control" rows="10" id="comment" name="content" method ="POST" action = "/process"></textarea>
         <br>
-        <button type="button" class="btn btn-success">Send</button>
+        <button type="button" class="btn btn-success" action ="/process">Send</button>
         <button type="button" class="btn btn-info">Show all</button>
     </div>
 </body>

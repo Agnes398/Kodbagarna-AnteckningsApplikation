@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var urlendcoderParser = bodyParser.urlencoded();
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
 })
@@ -8,6 +10,15 @@ app.get(__dirname + '/html/AboutUs.html', function(req, res){
 })
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
+app.post('/process' , urlendcoderParser , function(req, res){
+    data = {
+        title:req.body.title,
+        content:req.body.content
+    }
+    console.log(data);
+    res.end(JSON.stringify(data))
+})
+
 
 var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
