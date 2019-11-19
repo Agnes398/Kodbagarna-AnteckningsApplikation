@@ -35,3 +35,42 @@
     margin-left: 33%;
     margin-top: 20px;
 }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 400px){
+    .kodbagarnalogo {
+        margin-top: 105px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 30%;
+        height: 30%;
+    }
+
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
