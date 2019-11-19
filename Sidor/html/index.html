@@ -31,14 +31,19 @@
             Fyll i här nedan. 
         </p>
 
-        <label for="usr"><b>Title:</b></label>
-        <input type="text" class="form-control" id="usr">
+        <form type="/processpost" method="POST">
+            <label for="usr"><b>Title:</b></label>
+            <input type="text" class="form-control" id="usr" name="title">
 
-        <label for="comment"><b>Demo:</b></label>
-        <textarea class="form-control" rows="10" id="comment"></textarea>
-        <br>
-        <button type="button" class="btn btn-success">Send</button>
-        <button type="button" class="btn btn-info">Show all</button>
+            <label for="comment"><b>Demo:</b></label>
+            <textarea class="form-control" rows="10" id="comment" name="demo"></textarea>
+            <br>
+            <input type="submit" class="btn btn-success" value="Send" name="send"></input>
+            <input type="submit" class="btn btn-info" value="Show all" name="show"></input>
+        </form>
+        <script>
+            
+        </script>
     </div>
 </body>
 </html>
