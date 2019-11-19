@@ -10,10 +10,10 @@ app.get(__dirname + '/html/AboutUs.html', function(req, res){
 })
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
-app.post('/process' , urlendcoderParser , function(req, res){
+app.post('/processpost' , urlendcoderParser , function(req, res){
     data = {
         title:req.body.title,
-        content:req.body.content
+        demo:req.body.demo
     }
     console.log(data);
     res.end(JSON.stringify(data))
