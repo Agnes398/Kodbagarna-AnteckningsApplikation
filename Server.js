@@ -23,6 +23,6 @@ app.post('/processpost' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(1337, function(){
+var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
 })
