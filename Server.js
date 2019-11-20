@@ -24,6 +24,12 @@ app.get('/', function(req, res){
 app.get(__dirname + '/AboutUs.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/AboutUs.html");
 })
+app.get(__dirname + '/publish.html', function(req, res){
+    res.sendfile(__dirname + "/Sidor/html/publish.html");
+})
+app.get(__dirname + '/show.html', function(req, res){
+    res.sendfile(__dirname + "/Sidor/html/show.html");
+})
 
 app.post('/processpost' , urlendcoderParser , function(req, res){
     data = {
@@ -35,6 +41,6 @@ app.post('/processpost' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(1010, function(){
+var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
 })
