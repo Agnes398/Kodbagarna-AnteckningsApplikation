@@ -1,3 +1,14 @@
+const MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/test?retryWrites=true&w=majority";
+
+MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+    if(err) return console.log(err)
+
+    console.log("database connected");
+
+    client.close();
+});
+
 var express = require('express');
 var app = express();
 app.get('/', function(req, res){
