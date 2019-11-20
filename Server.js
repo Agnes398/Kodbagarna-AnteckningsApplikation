@@ -9,7 +9,7 @@ app.use(express.static('Sidor/html'))
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
 })
-app.get(__dirname + '/html/AboutUs.html', function(req, res){
+app.get(__dirname + '/AboutUs.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/info.html");
 })
 
