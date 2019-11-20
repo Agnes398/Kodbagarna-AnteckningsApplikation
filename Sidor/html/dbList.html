@@ -21,29 +21,33 @@
                 <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="AboutUs.html">About Us</a>
+                <a class="nav-link active" href="#">Published</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Published</a>
+                <a class="nav-link" href="AboutUs.html">About Us</a>
             </li>
         </ul>
         <br>
+        <hr/>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="container col-sm-6 text-center">
+            <div class="container col-sm-8">
+                <label id="titleCard"></label><br>
                 <button type="button" class="btn btn-primary">View</button>
-                <label>Titlecard here</label>
             </div>
         </div>
-        <br>
-        <textarea class="form-control" rows="25" id="comment" name="democontent"></textarea>
+        <hr/>
+    </div>
+
+    <div id="paragraf">
+        
     </div>
     
     <script>
-        for (var i = 0; i <100; i++) {
-            document.getElementById('comment').innerHTML += (i + '-');
+        for (var i = 0; i <10; i++) {
+            document.getElementById('titleCard').innerHTML += (i + '-');
         }
     </script>
 
