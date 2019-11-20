@@ -31,16 +31,26 @@ app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
-app.post('/processpost' , urlendcoderParser , function(req, res){
-    data = {
+app.post('/Send' , urlendcoderParser , function(req, res){
+    var Rawdata = {
         titlename:req.body.titlename,
         democontent:req.body.democontent
     }
-    console.log(data);
-    res.end(JSON.stringify(data))
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+        if(err) return console.log(err);
+        console.log(Rawdata);
+        MongoClient.Posts.insert({
+            title: Rawdata.titlename,
+            textcontent: Rawdata.democontent
+        })    
+        client.close();
+    });
+    
+   
+    
 })
 
 
-var server = app.listen(process.env.PORT, function(){
+var server = app.listen(1337, function(){
     console.log('Server is online on port ' + server.address().port);
 })
