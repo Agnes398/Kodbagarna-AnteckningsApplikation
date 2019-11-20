@@ -1,0 +1,197 @@
+.jumbotron.text-center{
+    background-image: url("https://mapr.com/blog/sample-code-best-practices-and-technical-resources-now-available-developer-central/assets/devcentralimage.jpg");
+}
+
+.jumbotron.text-center h1{
+    color: whitesmoke;
+}
+
+.col{
+    margin-top: 100px;
+}
+
+.containerOmOss {
+    height: 10em;
+    position: relative
+    color:  
+}
+
+.col-sm-8.column {
+    margin: 0;
+    margin-top: 30px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.col-sm-8.column h2{
+    text-align: center;
+}
+
+.kodbagarnalogo{
+    vertical-align: middle;
+    border-style: none;
+    margin-left: 33%;
+    margin-top: 20px;
+}
+
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (min-width: 400px){
+    .kodbagarnalogo {
+        margin-top: 130px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 45%;
+        height: auto;
+    }
+
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 450px){
+    .kodbagarnalogo {
+        margin-top: 130px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 40%;
+        height: auto;
+    }
+
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 500px){
+    .kodbagarnalogo {
+        margin-top: 130px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 35%;
+        height: auto;
+    }
+
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
+
+
+@media only screen and (min-width: 575px){
+    .kodbagarnalogo {
+        margin-top: 130px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 70%;
+        height: auto;
+    }
+    
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .kodbagarnalogo {
+        margin-top: 105px;
+        width: 50%;
+        height: 50%;
+        margin-left: 22%;
+    }
+
+    .col {
+        
+        flex-basis: auto !important;
+        
+    }
+
+    .personbild{
+        width: 50%;
+        height: auto;
+    }
+    
+    .column{
+        width: 100%;
+        margin-left: 3%;
+    }
+
+    .row {
+
+        margin: 0;
+    }
+}
