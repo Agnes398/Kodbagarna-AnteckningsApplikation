@@ -19,9 +19,10 @@ app.use(express.static('Sidor/html'))
 
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
+    res.sendfile(__dirname + '/Sidor/stylesheets/Main.css');
 })
 app.get(__dirname + '/AboutUs.html', function(req, res){
-    res.sendfile(__dirname + "/Sidor/html/info.html");
+    res.sendfile(__dirname + "/Sidor/html/AboutUs.html");
 })
 
 app.post('/processpost' , urlendcoderParser , function(req, res){
@@ -34,6 +35,6 @@ app.post('/processpost' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(process.env.PORT, function(){
+var server = app.listen(1010, function(){
     console.log('Server is online on port ' + server.address().port);
 })
