@@ -11,13 +11,6 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
         console.log("We are connected");
     }
 
-    var dbo = db.db('Kodbagarna');
-    dbo.createCollection("test", function(err, res) {
-        if (err) throw err;
-        console.log("Collection created");
-        
-    });
-
     dbo.collection("test").find({}, { projection: { _id: 0, name: 1, region: 1}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
@@ -26,7 +19,7 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
     db.close();
 
 });
-  
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -55,10 +48,25 @@ app.post('/Send' , urlendcoderParser , function(req, res)
         titlename:req.body.titlename,
         democontent:req.body.democontent
     }
-    console.log(Rawdata);
 
-});
 
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+        if (err) throw err;
+        var dbo = db.db('Kodbagarna');
+        dbo.createCollection(Rawdata.titlename, function(err, res) {
+            
+        });
+
+        dbo.collection("test").insertOne(Rawdata.democontent, function(err, res) {
+            if (err) throw err;
+            console.log(res);
+        });
+
+        client.close();
+    });
+    
+   
+})
 
 var server = app.listen(1337, function(){
     console.log('Server is online on port ' + server.address().port);
