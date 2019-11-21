@@ -5,7 +5,7 @@ var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/tes
 const client = new MongoClient(url, { useNewUrlParser: true });
 
 MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
-    var dbo = db.db(db.name);
+    var dbo = db.db('Kodbagarna');
     if(err) {
         return console.dir(err);
     } else {
@@ -39,7 +39,7 @@ app.get(__dirname + '/AboutUs.html', function(req, res){
 app.get(__dirname + '/publish.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/publish.html");
 
-    dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 1, titlename: 1, democontent: 0}}).toArray (function (err, res) {
+    dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 0, titlename: 1, democontent: 0}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
     });
@@ -49,6 +49,7 @@ app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
+<<<<<<< HEAD
 app.post('/Send' , urlendcoderParser , function(req, res)
 {
     var Rawdata = {
@@ -58,10 +59,18 @@ app.post('/Send' , urlendcoderParser , function(req, res)
 
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+=======
+app.post('/Send' , urlendcoderParser , function(req, res){
+    var Rawdata = { titlename:req.body.titlename, democontent:req.body.democontent };
+
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        var dbo = db.db('Kodbagarna');
+>>>>>>> 545a226337a112787412b27e5072d65d843559e3
         if (err) throw err;
+
         //skapa en ny anteckning i db
         dbo.createCollection(Rawdata.titlename, function(err, res) {
-            
+            var x = ObjectId(1);
         });
 
         //lägg in content i db
@@ -70,13 +79,7 @@ app.post('/Send' , urlendcoderParser , function(req, res)
             console.log(res);
         });
 
-        //visar content av anteckningar
-        // dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 0, democontent: 1}}).toArray (function (err, res) {
-        //     if (err) throw err;
-        //     console.log(res);
-        // });
-
-        client.close();
+        db.close();
     });
     
    
