@@ -4,6 +4,7 @@ var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/tes
 const client = new MongoClient(url, { useNewUrlParser: true });
 
 MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
+    var dbo = db.db(db.name);
     if(err) {
         return console.dir(err);
     } else {
@@ -56,7 +57,6 @@ app.post('/Send' , urlendcoderParser , function(req, res){
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
         if (err) throw err;
-        var dbo = db.db(db.name);
         //skapa en ny anteckning i db
         dbo.createCollection(Rawdata.titlename, function(err, res) {
             
