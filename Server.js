@@ -10,13 +10,6 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
         console.log("We are connected");
     }
 
-    var dbo = db.db('Kodbagarna');
-    dbo.createCollection("test", function(err, res) {
-        if (err) throw err;
-        console.log("Collection created");
-        
-    });
-
     dbo.collection("test").find({}, { projection: { _id: 0, name: 1, region: 1}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
@@ -25,6 +18,7 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
     db.close();
 
 });
+
 
 var express = require('express');
 var app = express();
@@ -53,18 +47,23 @@ app.post('/Send' , urlendcoderParser , function(req, res){
         titlename:req.body.titlename,
         democontent:req.body.democontent
     }
+
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
-        if(err) return console.log(err);
-        console.log(Rawdata);
-        MongoClient.Posts.insert({
-            title: Rawdata.titlename,
-            textcontent: Rawdata.democontent
-        })    
+        if (err) throw err;
+        var dbo = db.db('Kodbagarna');
+        dbo.createCollection(Rawdata.titlename, function(err, res) {
+            
+        });
+
+        dbo.collection("test").insertOne(Rawdata.democontent, function(err, res) {
+            if (err) throw err;
+            console.log(res);
+        });
+
         client.close();
     });
     
    
-    
 })
 
 
