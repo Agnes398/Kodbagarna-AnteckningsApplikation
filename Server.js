@@ -1,12 +1,29 @@
+var express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(url, { useNewUrlParser: true });
 
-MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
-    if(err) return console.log(err)
+MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
+    if(err) {
+        return console.dir(err);
+    } else {
+        console.log("We are connected");
+    }
 
-    console.log("database connected");
+    var dbo = db.db('Kodbagarna');
+    dbo.createCollection("test", function(err, res) {
+        if (err) throw err;
+        console.log("Collection created");
+        
+    });
 
-    client.close();
+    dbo.collection("test").find({}, { projection: { _id: 0, name: 1, region: 1}}).toArray (function (err, res) {
+        if (err) throw err;
+        console.log(res);
+    });
+
+    db.close();
+
 });
 
 var express = require('express');
