@@ -1,6 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/test?retryWrites=true&w=majority";
-
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
     if(err) return console.log(err)
 
@@ -8,7 +7,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
 
     client.close();
 });
-
+  
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -31,24 +30,15 @@ app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
-app.post('/Send' , urlendcoderParser , function(req, res){
+app.post('/Send' , urlendcoderParser , function(req, res)
+{
     var Rawdata = {
         titlename:req.body.titlename,
         democontent:req.body.democontent
     }
-    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
-        if(err) return console.log(err);
-        console.log(Rawdata);
-        MongoClient.Posts.insert({
-            title: Rawdata.titlename,
-            textcontent: Rawdata.democontent
-        })    
-        client.close();
-    });
-    
-   
-    
-})
+    console.log(Rawdata);
+
+});
 
 
 var server = app.listen(1337, function(){
