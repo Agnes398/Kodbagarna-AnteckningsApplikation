@@ -37,6 +37,12 @@ app.get(__dirname + '/AboutUs.html', function(req, res){
 })
 app.get(__dirname + '/publish.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/publish.html");
+
+    dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 1, titlename: 1, democontent: 0}}).toArray (function (err, res) {
+        if (err) throw err;
+        console.log(res);
+    });
+
 })
 app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
@@ -52,15 +58,23 @@ app.post('/Send' , urlendcoderParser , function(req, res)
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
         if (err) throw err;
-        var dbo = db.db('Kodbagarna');
+        var dbo = db.db(db.name);
+        //skapa en ny anteckning i db
         dbo.createCollection(Rawdata.titlename, function(err, res) {
             
         });
 
-        dbo.collection("test").insertOne(Rawdata.democontent, function(err, res) {
+        //lägg in content i db
+        dbo.collection(Rawdata.titlename).insertOne(Rawdata.democontent, function(err, res) {
             if (err) throw err;
             console.log(res);
         });
+
+        //visar content av anteckningar
+        // dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 0, democontent: 1}}).toArray (function (err, res) {
+        //     if (err) throw err;
+        //     console.log(res);
+        // });
 
         client.close();
     });
