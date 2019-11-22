@@ -1,7 +1,6 @@
 var express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/test?retryWrites=true&w=majority";
-
 const client = new MongoClient(url, { useNewUrlParser: true });
 
 MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
@@ -15,6 +14,7 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
     db.close();
 
 });
+
 
 var express = require('express');
 var app = express();
@@ -46,24 +46,12 @@ app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
-<<<<<<< HEAD
-app.post('/Send' , urlendcoderParser , function(req, res)
-{
-    var Rawdata = {
-        titlename:req.body.titlename,
-        democontent:req.body.democontent
-    }
-
-
-    MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
-=======
 app.post('/Send' , urlendcoderParser , function(req, res){
     var titlename = req.body.titlename;
     var democontent = req.body.democontent;
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         var dbo = db.db('Kodbagarna');
->>>>>>> 545a226337a112787412b27e5072d65d843559e3
         if (err) throw err;
 
         var myNoteObj = { Note: democontent };
@@ -83,6 +71,7 @@ app.post('/Send' , urlendcoderParser , function(req, res){
    
 })
 
-var server = app.listen(1337, function(){
+
+var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
 })
