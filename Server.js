@@ -50,19 +50,23 @@ app.get(__dirname + '/show.html', function(req, res){
 })
 
 app.post('/Send' , urlendcoderParser , function(req, res){
-    var Rawdata = { titlename:req.body.titlename, democontent:req.body.democontent };
+    var titlename = req.body.titlename;
+    var democontent = req.body.democontent;
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         var dbo = db.db('Kodbagarna');
         if (err) throw err;
 
+        
+        var myNoteObj = { Note: democontent };
+
         //skapa en ny anteckning i db
-        dbo.createCollection(Rawdata.titlename, function(err, res) {
-            var x = ObjectId(1);
+        dbo.createCollection(titlename, function(err, res) {
+            
         });
 
         //lägg in content i db
-        dbo.collection(Rawdata.titlename).insertOne(Rawdata.democontent, function(err, res) {
+        dbo.collection(titlename).insertOne(myNoteObj, function(err, res) {
             if (err) throw err;
             console.log(res);
         });
