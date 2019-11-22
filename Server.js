@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
+app.use(express.static('Sidor/html'))
 
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
@@ -31,6 +32,7 @@ app.get('/', function(req, res){
 })
 app.get(__dirname + '/AboutUs.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/AboutUs.html");
+    
 })
 app.get(__dirname + '/publish.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/publish.html");
@@ -45,8 +47,12 @@ app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
-app.post('/Send' , urlendcoderParser , function(req, res){
+app.post('/NoteSaved' , urlendcoderParser , function(req, res){
     var titlename = req.body.titlename;
+    if (titlename == "")
+    {
+        titlename = "Empty_Title";
+    }
     var democontent = req.body.democontent;
 
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
@@ -64,13 +70,13 @@ app.post('/Send' , urlendcoderParser , function(req, res){
         });
 
         db.close();
-
+    res.sendfile(__dirname + '/Sidor/html/index.html') 
     });
     
    
 })
 
 
-var server = app.listen(1337, function(){
+var server = app.listen(1010, function(){
     console.log('Server is online on port ' + server.address().port);
 })
