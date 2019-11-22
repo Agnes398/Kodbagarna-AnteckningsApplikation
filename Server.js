@@ -38,11 +38,9 @@ app.get(__dirname + '/publish.html', function(req, res){
     dbo.collection(titlename).find({}, { projection: { _id: 0, titlename: 1, democontent: 0}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
-        
     });
 
 })
-
 app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
@@ -51,7 +49,7 @@ app.post('/Send' , urlendcoderParser , function(req, res){
     var titlename = req.body.titlename;
     var democontent = req.body.democontent;
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         var dbo = db.db('Kodbagarna');
         if (err) throw err;
 
