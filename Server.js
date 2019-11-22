@@ -42,9 +42,11 @@ app.get(__dirname + '/publish.html', function(req, res){
     dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 0, titlename: 1, democontent: 0}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
+        
     });
 
 })
+
 app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
