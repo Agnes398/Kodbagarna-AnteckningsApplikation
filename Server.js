@@ -12,11 +12,6 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function (err, db) {
         console.log("We are connected");
     }
 
-    dbo.collection("test").find({}, { projection: { _id: 0, name: 1, region: 1}}).toArray (function (err, res) {
-        if (err) throw err;
-        console.log(res);
-    });
-
     db.close();
 
 });
@@ -39,12 +34,14 @@ app.get(__dirname + '/AboutUs.html', function(req, res){
 app.get(__dirname + '/publish.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/publish.html");
 
-    dbo.collection(Rawdata.titlename).find({}, { projection: { _id: 0, titlename: 1, democontent: 0}}).toArray (function (err, res) {
+    dbo.collection(titlename).find({}, { projection: { _id: 0, titlename: 1, Note: 0}}).toArray (function (err, res) {
         if (err) throw err;
         console.log(res);
+        
     });
 
 })
+
 app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
@@ -69,21 +66,18 @@ app.post('/Send' , urlendcoderParser , function(req, res){
 >>>>>>> 545a226337a112787412b27e5072d65d843559e3
         if (err) throw err;
 
-        
         var myNoteObj = { Note: democontent };
 
         //skapa en ny anteckning i db
-        dbo.createCollection(titlename, function(err, res) {
-            
-        });
+        dbo.createCollection(titlename, function(err, res) {});
 
         //lägg in content i db
         dbo.collection(titlename).insertOne(myNoteObj, function(err, res) {
             if (err) throw err;
-            console.log(res);
         });
 
         db.close();
+
     });
     
    
