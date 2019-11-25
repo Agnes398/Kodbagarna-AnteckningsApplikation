@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
-app.use(express.static('Sidor/html'))
+
 
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
@@ -35,7 +35,7 @@ app.get(__dirname + '/AboutUs.html', function(req, res){
     
 })
 app.get(__dirname + '/publish.html', function(req, res){
-    res.sendfile(__dirname + "/Sidor/html/publish.html");
+    res.sendFile(__dirname + "/Sidor/html/publish.html");
 
     dbo.collection(titlename).find({}, { projection: { _id: 0, titlename: 1, democontent: 0}}).toArray (function (err, res) {
         if (err) throw err;
@@ -72,7 +72,7 @@ app.post('/NoteSaved' , urlendcoderParser , function(req, res){
         });
 
         db.close();
-    res.sendfile(__dirname + '/Sidor/html/index.html') 
+    res.sendFile(__dirname + '/Sidor/html/index.html') 
     });
     
    
