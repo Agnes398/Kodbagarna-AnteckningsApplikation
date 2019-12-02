@@ -19,19 +19,14 @@ app.get(__dirname + '/AboutUs.html', function(req, res){
 app.get(__dirname + '/publish.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/publish.html");
 
-    dbo.collection(titlename).find({}, { projection: { _id: 0, titlename: 1}}).toArray (function (err, res) {
-        if (err) throw err;
-        console.log(res);
-    });
-
 })
 app.get(__dirname + '/show.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/show.html");
 })
 
 app.post('/NoteSaved' , urlendcoderParser , function(req, res){
-    var titlename = req.body.titlename;
-    var democontent = req.body.democontent;
+    exports.titlename = req.body.titlename;
+    exports.democontent = req.body.democontent;
     if (titlename == "")
     {
         titlename = "Empty_Title";
