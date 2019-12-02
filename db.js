@@ -14,7 +14,7 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function(err, db) {
 
     console.log("Connection created");
 
-    dbo.createCollection("Test1", function(err, res) {
+    dbo.createCollection("Test", function(err, res) {
         if (err) throw err;
         console.log("Collection created");
 
@@ -32,6 +32,8 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function(err, db) {
         if (err) throw err;
         console.log(res);
 
+        db.close();
+
     });
 
     // dbo.listCollections().toArray( function (err, res) {
@@ -40,7 +42,7 @@ MongoClient.connect(url, {useUnifiedTopology:true}, function(err, db) {
 
     // var query = { name: "Test"};
 
-    // dbo.collection("Test1").find(query).toArray( function(err, res) {
+    // dbo.collection("Test").find(query).toArray( function(err, res) {
     //     if (err) throw err;
     //     console.log(res);
 
