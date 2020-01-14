@@ -37,6 +37,6 @@ app.post('/NoteSaved' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(port, function(){
+var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
 })
