@@ -7,10 +7,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('Sidor'))
 app.use(express.static('Sidor/html'))
 
-
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/index.html');
-    res.sendfile(__dirname + '/Sidor/stylesheets/Main.css');
 })
 app.get(__dirname + '/AboutUs.html', function(req, res){
     res.sendfile(__dirname + "/Sidor/html/AboutUs.html");
