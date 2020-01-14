@@ -8,6 +8,7 @@
     <link rel = "stylesheet" type = "text/css" href = "../stylesheets/Main.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" url="mongodb+srv://Agnes398:Kodbagarna398@kodbagarna-urrhe.mongodb.net/test?retryWrites=true&w=majority"/>
+    <script src ="../JavaScript/PostLog.js"></script>
     <title>KodBagarnas Pub</title>
 </head>
 <body>
@@ -30,9 +31,7 @@
         </ul>
         <br>
         <hr/>
-    </div>
-
-    <!-- <div class="container">
+    <div class="container">
         <div class="row">
             <div class="container col-sm-8">
                 <label id="titleCard">Hello</label><br>
@@ -40,11 +39,52 @@
             </div>
         </div>
         <hr/>
-    </div> -->
+    </div>
 
+    <div id = "PostLog">Hej
     <script>
+         
+        // var NewContainer = document.getElementById("PostLog").createElement('div').setAttribute('class' , 'container');
+        // document.body.appendChild(NewContainer);
+        // var Row = document.createElement('div').setAttribute('class', 'row');
+        // document.body.NewContainer.appendChild(Row);
+        // var Col = document.createElement('div').setAttribute('class', 'container col-sm-8' );
+        // documen.body.NewContainer.Row.appendChild(Col);
+        // var para = document.createElement('p');
+        // para.textContent("Text here");
+        // var Log = document.body.NewContainer.Row.Col.appendChild(para).innerHTML;
+
+        // var div = document.createElement('div');
+        // div.textContent('Hello');
+        // div.setAttribute('class', 'note');
+        // document.body.appendChild(div);
+        // var para = document.createElement('p');
+        // para.textContent('World');
+        // div.appendChild(para);
+        // var currentDiv = document.getElementById("PostLog").innerHTML = Log;
         
+        
+        
+        
+
+        var NewContainer = document.createElement('div').setAttribute('class', 'container');
+        var Row = document.createElement('div').setAttribute('class', 'row');
+        NewContainer.innerHTML(Row);
+        document.body.appendChild(NewContainer);
+        var Col = document.createElement('div').setAttribute('class', 'container col-sm-8' );
+        Row.innerHTML(Col)
+        document.body.NewContainer.appendChild(Row);
+        var testelement = document.createElement('p');
+        testelement.innerHTML = "hej i am Neo"; 
+        Col.innerHTML(testelement);
+        document.body.NewContainer.Row.appendChild(Col);
+        document.body.NewContainer.Row.appendChild(testelement);
+
+
+
     </script>
+        
+    </div>
 
 </body>
 </html>

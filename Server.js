@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var port = 1337 || process.env.PORT;
 var urlendcoderParser = bodyParser.urlencoded();
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -10,14 +11,6 @@ app.use(express.static('Sidor'))
 app.get('/', function(req, res){
     res.sendfile(__dirname + '/Sidor/html/AboutUs.html');
 })
-
-// app.get(__dirname + '/publish.html', function(req, res){
-//     res.sendfile(__dirname + "/Sidor/html/publish.html");
-
-// })
-// app.get(__dirname + '/show.html', function(req, res){
-//     res.sendfile(__dirname + "/Sidor/html/show.html");
-// })
 
 app.post('/NoteSaved' , urlendcoderParser , function(req, res){
     exports.titlename = req.body.titlename;
@@ -33,6 +26,6 @@ app.post('/NoteSaved' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(1337, function(){
+var server = app.listen(process.env.PORT, function(){
     console.log('Server is online on port ' + server.address().port);
 })
