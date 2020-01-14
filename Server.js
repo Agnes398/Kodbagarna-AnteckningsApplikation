@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var port = 1337 || process.env.PORT;
 var urlendcoderParser = bodyParser.urlencoded();
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,6 +37,6 @@ app.post('/NoteSaved' , urlendcoderParser , function(req, res){
 })
 
 
-var server = app.listen(1337, function(){
+var server = app.listen(port, function(){
     console.log('Server is online on port ' + server.address().port);
 })
